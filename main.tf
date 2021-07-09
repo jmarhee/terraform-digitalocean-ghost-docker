@@ -2,6 +2,11 @@ provider "digitalocean" {
   token = var.digitalocean_token
 }
 
+provider "cloudflare" {
+  email   = var.cloudflare_email
+  api_key = var.cloudflare_api_key
+}
+
 locals {
   ssh_key_name = "ocean_key"
 }
