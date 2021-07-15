@@ -38,6 +38,10 @@ variable "cloudflare_domain" {
   default     = "your_domain.com"
 }
 
-variable "cloudflare_api_token" {
+variable "cloudflare_api_key" {
   description = "Cloudflare API Token"
+}
+
+variable "cloudflare_email" {
+  description = "CloudFlare email"
 }

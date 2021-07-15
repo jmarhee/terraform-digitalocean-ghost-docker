@@ -32,14 +32,14 @@ resource "cloudflare_record" "ghost" {
 resource "null_resource" "node_setup" {
   depends_on = [digitalocean_droplet.ghost, cloudflare_record.ghost]
   connection {
-    host        = digitalocean_droplet.ghost.public_ipv4
+    host        = digitalocean_droplet.ghost.ipv4_address
     type        = "ssh"
     user        = "root"
     private_key = pathexpand(format("%s", local.ssh_key_name))
   }
 
   provisioner "file" {
-    source      = template_file.ghost.rendered
+    source      = data.template_file.ghost.rendered
     destination = "/root/ghost.sh"
   }
 
